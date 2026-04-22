@@ -239,7 +239,6 @@ input:focus + svg,
   transition: color 0.2s;
 }
 .forgot:hover { color: var(--teal-dark); text-decoration: underline; }
-/* ── BUTTON ──────────────────────────────────── */
 .btn-login {
   width: 100%;
   padding: 13px;
@@ -251,9 +250,9 @@ input:focus + svg,
   letter-spacing: 0.5px;
   border: none;
   border-radius: 8px;
+  text-decoration: none;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
   transition: transform 0.15s, box-shadow 0.2s;
   box-shadow: 0 6px 20px rgba(0,140,153,0.35);
 }
