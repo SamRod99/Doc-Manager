@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="css/globales.css">
 </head>
 <body>
+    
+<?php
+require_once 'BD/conectar.php'; 
+$db = Conexion::ConexionBD(); 
+?>
 
   <aside id="sidebar-container"></aside><!--css/sidebar-->
 
@@ -73,47 +78,65 @@
             <button class="btn-sm">Ver todas</button>
           </div>
           <table>
-            <thead>
-              <tr>
-                <th>Paciente</th>
-                <th>Médico</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Juan Perez</td>
-                <td>Ana Lopez</td>
-                <td>10/03/26</td>
-                <td><span class="status-pill pill-atendida">Atendida</span></td>
-              </tr>
-              <tr>
-                <td>Jose Ortega</td>
-                <td>Carlos Dario</td>
-                <td>11/03/26</td>
-                <td><span class="status-pill pill-atendida">Atendida</span></td>
-              </tr>
-              <tr>
-                <td>María Sánchez</td>
-                <td>Ana Lopez</td>
-                <td>15/03/26</td>
-                <td><span class="status-pill pill-pendiente">Pendiente</span></td>
-              </tr>
-              <tr>
-                <td>Roberto Díaz</td>
-                <td>Luis Herrera</td>
-                <td>18/03/26</td>
-                <td><span class="status-pill pill-cancelada">Cancelada</span></td>
-              </tr>
-              <tr>
-                <td>Laura Jiménez</td>
-                <td>Carlos Dario</td>
-                <td>20/03/26</td>
-                <td><span class="status-pill pill-pendiente">Pendiente</span></td>
-              </tr>
-            </tbody>
-          </table>
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php
+        $sql = "
+        SELECT 
+            p.nombre,
+            c.fecha_hora,
+            c.estado
+        FROM citas c
+        JOIN pacientes p ON p.id_paciente = c.id_paciente
+        ORDER BY c.id_cita DESC
+        ";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+            // 🔥 separación aquí
+            $fecha = date("Y-m-d", strtotime($row['fecha_hora']));
+            $hora = date("H:i", strtotime($row['fecha_hora']));
+        ?>
+        <tr>
+            <td><?php echo $row['nombre']; ?></td>
+
+            <td><?php echo $fecha; ?></td>
+
+            <td><?php echo $hora; ?></td>
+
+            <td>
+                <?php
+                $status = $row['estado'];
+
+                if ($status == "completada") {
+                    echo '<span class="status-pill pill-atendida">Atendida</span>';
+                } 
+                elseif ($status == "pendiente") {
+                    echo '<span class="status-pill pill-pendiente">Pendiente</span>';
+                } 
+                elseif ($status == "cancelada") {
+                    echo '<span class="status-pill pill-cancelada">Cancelada</span>';
+                } 
+                else {
+                    echo '<span class="status-pill">Sin estado</span>';
+                }
+                ?>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
         </div>
 
         <!-- RIGHT COLUMN -->
