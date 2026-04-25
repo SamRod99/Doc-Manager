@@ -1,0 +1,16 @@
+header {
+  height: var(--topbar-h);
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, var(--teal-light) 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 1rem;
+  position: sticky; top: 0; z-index: 50;
+  box-shadow: 0 2px 12px rgba(0,80,90,0.2);
+}
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  flex: 1;
+}

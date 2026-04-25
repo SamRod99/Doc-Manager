@@ -1,0 +1,31 @@
+/* ── BOX SIZING ──────────────────────────────────── */
+*, *::before, *::after 
+{ 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+/* ── LAYOUT ──────────────────────────────────── */
+.layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── MAIN ────────────────────────────────────── */
+main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+/* ── BODY ──────────────────────────────────── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+}
+
