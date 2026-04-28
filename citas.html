@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/citas.css">
+    <link rel="stylesheet" href="css/pacientes.css">
     <title>DocManager - Citas</title>
 </head>
 <body data-title="Citas">
@@ -17,10 +19,39 @@
         <div id="header-container"></div>
         
         <main>
-
+            <form class="form-card">
+                <h2 class="form-title">Agendar nueva cita</h2>
+                <div class="form-col">
+                    <div class="field-group">
+                        <label for="paciente">Paciente</label>
+                        <select name="paciente" id="paciente">
+                            <option value="Samuel Garcia (ID: 101)"></option>
+                            <option value="Samuel Garcia (ID: 101)"></option>
+                            <option value="Samuel Garcia (ID: 101)"></option>
+                            <option value="Samuel Garcia (ID: 101)"></option>
+                        </select>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="field-group">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" name="fecha" id="fecha">
+                        </div>
+                        <div class="field-group">
+                            <label for="hora">Hora</label>
+                            <input type="time" name="hora" id="hora">
+                        </div>
+                    </div><!--form-grid-2-->
+                    <div class="field-group">
+                        <label for="motivo">Motivo de consulta</label>
+                        <input type="text" name="motivo" id="motivo" placeholder="Describa el motivo de la consulta">
+                    </div>
+                </div><!--form col-->
+                <div class="form-actions">
+                    <button type="button">Confirmar Cita</button>
+                </div>
+            </form><!--form card-->
         </main>
     </div><!--header-->
-
 
     <script src="js/header.js"></script>
     <script src="js/sidebar.js"></script>
