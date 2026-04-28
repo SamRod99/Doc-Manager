@@ -18,13 +18,15 @@ main {
   flex: 1;
   padding: 2rem;
   background: var(--bg);
-}
 
+}
 .form-card {
   background: var(--bg);
   border: 2px solid var(--border);
   border-radius: 20px;
   padding: 2rem 2.5rem 2.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.5s ease both;
 }
 
 .form-title {
@@ -105,8 +107,13 @@ main {
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
   padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.5s ease both;
 }
-
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .list-toolbar {
   display: flex;
   gap: 1rem;
