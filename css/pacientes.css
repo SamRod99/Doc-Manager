@@ -1,0 +1,217 @@
+:root {
+  --teal-dark:   #00707a;
+  --teal:        #008c99;
+  --teal-light:  #00b4c4;
+  --teal-mint:   #00d4aa;
+  --sidebar-bg:  #1a2628;
+  --sidebar-w:   220px;
+  --topbar-h:    64px;
+  --bg:          #eef2f4;
+  --white:       #ffffff;
+  --text:        #1e2e32;
+  --text-muted:  #607a82;
+  --border:      #dde6e9;
+  --orange:      #e8881a;
+  --radius:      10px;
+}
+main {
+  flex: 1;
+  padding: 2rem;
+  background: var(--bg);
+}
+
+.form-card {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 2.5rem 2.5rem;
+}
+
+.form-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem 2rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.field-group input {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--text-muted);
+  border-radius: 6px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.field-group input:focus {
+  border-color: var(--teal);
+  background: var(--white);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.5rem;
+}
+
+.form-actions button {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--teal-mint);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-actions button:hover {
+  background: var(--teal);
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ── LISTA ───────────────────────────────────── */
+.list-card {
+  background: var(--bg);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+}
+
+.list-toolbar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f4f5;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 8px;
+  padding: 0 14px;
+  transition: border-color 0.2s;
+}
+
+.search-wrapper:focus-within {
+  border-color: var(--teal);
+  background: var(--white);
+}
+
+.search-wrapper svg {
+  width: 18px; height: 18px;
+  stroke: var(--teal); fill: none; stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.search-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 11px 0;
+  outline: none;
+}
+
+.search-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-nuevo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--teal-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 0 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.btn-nuevo:hover { background: var(--teal); }
+
+/* ── TABLA ───────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead tr {
+  background: #e6f7f8;
+}
+
+thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #f0f4f5;
+  transition: background 0.15s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #f7fbfc; }
+
+tbody td {
+  padding: 13px 16px;
+  color: var(--text);
+}
+
+.btn-ver, .btn-volver {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--teal);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-ver:hover { background: var(--teal-dark); }
