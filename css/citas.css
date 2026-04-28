@@ -86,3 +86,38 @@ main {
 .form-actions button:hover {
     background: var(--teal);
 }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  width: fit-content;
+}
+
+.tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 32px;
+  border: none;
+  border-right: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab:last-child { border-right: none; }
+
+.tab:hover { background: #f0f4f5; }
+
+.tab.active {
+  background: var(--teal-dark);
+  color: #fff;
+  font-weight: 700;
+}
+

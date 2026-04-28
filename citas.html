@@ -19,8 +19,59 @@
         <div id="header-container"></div>
         
         <main>
-            <form class="form-card">
-                <h2 class="form-title">Agendar nueva cita</h2>
+            <div class="lista-card" id="vista-lista">
+                <div class="list-toolbar">
+                    <div class="tabs">
+                        <button class="tab" data-filter="todas">Todas</button>
+                        <button class="tab" data-filter="programada">Programadas</button>
+                        <button class="tab" data-filter="atendida">Atendidas</button>
+                        <button class="tab" data-filter="cancelada">Canceladas</button>
+                    </div>
+                    <button class="btn-nuevo" id="btn-abrir-form">Nueva cita</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Paciente</th>
+                            <th>Motivo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>100</td><td>27/04/2026</td><td>Juan Perez</td><td>Lele pancha</td><td>Pendiente</td>
+                            <td><button class="btn-ver">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>101</td><td>Aldo</td><td>Perez</td><td>32</td><td>O+</td>
+                            <td><button class="btn-ver">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>102</td><td>Miguel</td><td>Perez</td><td>32</td><td>O+</td>
+                            <td><button class="btn-ver">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td>103</td><td>Samuel</td><td>Perez</td><td>32</td><td>O+</td>
+                            <td><button class="btn-ver">Ver</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div><!--lista-card-->
+            
+            <form class="form-card" style="display: none;" id="vista-form">
+                <div class="form-header">
+                    <button type="button" class="btn-volver" id="btn-volver">
+                        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                        Volver
+                    </button>
+                    <h2 class="form-title">Nueva Cita</h2>
+                </div>
+
                 <div class="form-col">
                     <div class="field-group">
                         <label for="paciente">Paciente</label>
@@ -55,6 +106,7 @@
 
     <script src="js/header.js"></script>
     <script src="js/sidebar.js"></script>
+    <script src="js/citas.js"></script>
 
 </body>
 </html>
