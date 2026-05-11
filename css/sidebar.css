@@ -24,9 +24,12 @@ aside {
   background: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   z-index: 100;
   transition: transform 0.3s;
+  position: sticky;
+  top: 0;
 }
 #sidebar-container {
   width: var(--sidebar-w);
@@ -118,4 +121,17 @@ nav.sidebar-nav {
   font-size: 0.82rem;
   color: rgba(255,255,255,0.75);
   font-weight: 500;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
 }
