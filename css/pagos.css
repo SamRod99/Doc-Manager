@@ -1,0 +1,230 @@
+main {
+    flex: 1;
+    padding: 2rem;
+    background: var(--bg);
+}
+
+/* ── REPORTE ─────────────────────────────────── */
+.list-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    padding: 1.5rem;
+}
+
+.list-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.form-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+}
+
+.btn-nuevo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--teal-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-nuevo:hover { background: var(--teal); }
+
+/* Tarjetas resumen */
+.pagos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.pago-card {
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #fff;
+}
+
+.pago-card span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.pago-card strong {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead tr { background: #e6f7f8; }
+
+thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #f0f4f5;
+    transition: background 0.15s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #f7fbfc; }
+
+tbody td {
+    padding: 13px 16px;
+    color: var(--text);
+}
+
+/* ── FORMULARIO ──────────────────────────────── */
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    padding: 2rem 2.5rem 2.5rem;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-volver {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+    background: transparent;
+    border: 1.5px solid var(--teal-dark);
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-volver:hover { background: var(--teal-dark); color: #fff; }
+
+.btn-volver svg {
+    width: 16px; height: 16px;
+    stroke: currentColor; fill: none; stroke-width: 2.5;
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-group label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.field-group input,
+.field-group select {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--text);
+    background: #f0f4f5;
+    border: 1.5px solid transparent;
+    border-radius: 6px;
+    padding: 10px 14px;
+    outline: none;
+    appearance: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+    border-color: var(--teal);
+    background: var(--white);
+}
+
+/* Tabs método de pago */
+.metodo-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+}
+
+.metodo-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 12px;
+    border: none;
+    border-right: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.metodo-tab:last-child { border-right: none; }
+.metodo-tab:hover { background: #f0f4f5; }
+
+.metodo-tab.active {
+    background: var(--teal-dark);
+    color: #fff;
+    font-weight: 700;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--teal-mint);
+    border: none;
+    border-radius: 8px;
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.form-actions button:hover { background: var(--teal); }

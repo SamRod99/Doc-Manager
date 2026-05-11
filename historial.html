@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/historial.css">
     <title>DocManager - Historial</title>
 </head>
+
 <body data-title="Historial">
-    
+
     <aside id="sidebar-container"></aside>
 
     <div class="layout">
         <div id="header-container"></div>
 
         <main>
-            
+
+            <!-- Selector de paciente -->
+            <div class="historial-search">
+                <div class="search-wrapper">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <select id="selector-paciente">
+                        <option value="">Seleccionar paciente...</option>
+                        <option value="101">Juan Perez — ID: 101</option>
+                        <option value="102">Jose Ortega — ID: 102</option>
+                        <option value="103">Miguel Camacho — ID: 103</option>
+                        <option value="104">Aldo Moran — ID: 104</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Historial (oculto hasta seleccionar paciente) -->
+            <div id="historial-panel" class="historial-panel" style="display:none;">
+
+                <!-- Banner del paciente -->
+                <div class="paciente-banner">
+                    <span id="banner-nombre" class="banner-nombre"></span>
+                    <span class="banner-sep">·</span>
+                    <span id="banner-id"></span>
+                    <span class="banner-sep">·</span>
+                    <span id="banner-sangre"></span>
+                    <span class="banner-sep">·</span>
+                    <span id="banner-edad"></span>
+                </div>
+
+                <!-- Tarjeta del registro -->
+                <div class="historial-card">
+
+                    <!-- Fecha -->
+                    <div class="historial-fecha-btn">10/03/2026</div>
+
+                    <!-- Campos -->
+                    <div class="historial-campos">
+
+                        <div class="historial-row">
+                            <span class="historial-label">Diagnóstico:</span>
+                            <div class="historial-value" id="h-diagnostico"></div>
+                        </div>
+
+                        <div class="historial-row">
+                            <span class="historial-label">Tratamiento:</span>
+                            <div class="historial-value" id="h-tratamiento"></div>
+                        </div>
+
+                        <div class="historial-row">
+                            <span class="historial-label">Alergias:</span>
+                            <div class="historial-value" id="h-alergias"></div>
+                        </div>
+
+                        <div class="historial-row">
+                            <span class="historial-label">Enf. Crónicas:</span>
+                            <div class="historial-value" id="h-cronicas"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </main>
+
     </div>
 
     <script src="js/header.js"></script>
     <script src="js/sidebar.js"></script>
+    <script src="js/historial.js"></script>
 
 </body>
+
 </html>

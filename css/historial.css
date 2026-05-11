@@ -1,0 +1,127 @@
+main {
+  flex: 1;
+  padding: 2rem;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Buscador selector */
+.historial-search .search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0 14px;
+  max-width: 420px;
+  transition: border-color 0.2s;
+}
+
+.historial-search .search-wrapper:focus-within {
+  border-color: var(--teal);
+}
+
+.historial-search .search-wrapper svg {
+  width: 18px; height: 18px;
+  stroke: var(--teal); fill: none; stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.historial-search select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text);
+  padding: 12px 0;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Banner paciente */
+.historial-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: fadeUp 0.3s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.paciente-banner {
+  background: linear-gradient(135deg, #e0f5f5, #f0faf8);
+  border-radius: var(--radius);
+  padding: 1rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--teal-dark);
+  font-weight: 500;
+}
+
+.banner-nombre {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.banner-sep {
+  color: var(--teal-light);
+  font-weight: 300;
+}
+
+/* Tarjeta historial */
+.historial-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.historial-fecha-btn {
+  display: inline-block;
+  background: var(--teal-dark);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 6px;
+  margin: 1.2rem 1.5rem 0.5rem;
+}
+
+.historial-campos {
+  padding: 0.8rem 1.5rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.historial-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.historial-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.historial-value {
+  background: #f0f4f5;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: var(--text);
+  min-height: 40px;
+}

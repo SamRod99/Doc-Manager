@@ -1,0 +1,84 @@
+main {
+  flex: 1;
+  padding: 2rem;
+  background: var(--bg);
+}
+
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  padding: 2rem 2.5rem 2.5rem;
+}
+
+.form-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 2rem;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.field-group input,
+.field-group select {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: #f0f4f5;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  padding: 10px 14px;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+  border-color: var(--teal);
+  background: var(--white);
+}
+
+/* Última fila: fecha + botón lado a lado */
+.form-last-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.form-actions button {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--teal-mint);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 36px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  height: 100%;
+}
+
+.form-actions button:hover {
+  background: var(--teal);
+}

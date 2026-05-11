@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/recetas.css">
     <title>DocManager - Recetas</title>
 </head>
+
 <body data-title="Recetas">
-    
+
     <aside id="sidebar-container"></aside>
 
 
@@ -17,8 +20,50 @@
         <div id="header-container"></div>
 
         <main>
-            
+            <form class="form-card" id="form-receta">
+                <h2 class="form-title">Nueva Receta</h2>
+
+                <div class="form-col">
+
+                    <div class="field-group">
+                        <label for="cita">Cita vinculada</label>
+                        <select name="cita" id="cita">
+                            <option value="">Seleccionar cita...</option>
+                            <option>Cita #1 — Juan Perez / Ana Lopez</option>
+                            <option>Cita #2 — Jose Ortega / Carlos Dario</option>
+                            <option>Cita #3 — Miguel Camacho / Samuel Rod.</option>
+                            <option>Cita #4 — Aldo Moran / Jairo Sanchez</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="medicamento">Medicamento</label>
+                        <input type="text" name="medicamento" id="medicamento" placeholder="Ej. Losartan">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="dosis">Dosis</label>
+                        <input type="text" name="dosis" id="dosis" placeholder="Ej. 50mg cada 24h">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="duracion">Duración del Tratamiento</label>
+                        <input type="text" name="duracion" id="duracion" placeholder="Ej. 30 días">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="fecha-emision">Fecha de Emisión</label>
+                        <input type="date" name="fecha-emision" id="fecha-emision">
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Emitir Receta</button>
+                </div>
+            </form>
         </main>
+
     </div>
 
 
@@ -26,4 +71,5 @@
     <script src="js/sidebar.js"></script>
 
 </body>
+
 </html>
