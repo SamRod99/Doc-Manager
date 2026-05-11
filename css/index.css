@@ -164,17 +164,35 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 11px 13px 11px 40px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text);
-  background: #f5f8f9;
-  outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+input[type="password"],
+input[type="email"] {
+
+    width: 100%;
+
+    padding: 11px 13px 11px 40px;
+
+    border: 1.5px solid var(--border);
+
+    border-radius: 8px;
+
+    font-family: 'DM Sans', sans-serif;
+
+    font-size: 0.95rem;
+
+    color: var(--text);
+
+    background: #f5f8f9;
+
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    transition:
+        border-color 0.25s,
+        box-shadow 0.25s,
+        background 0.25s;
 }
 input:focus {
   border-color: var(--teal);
