@@ -4,6 +4,8 @@ main {
   background: var(--bg);
 }
 
+/* ───────────────── FORM ───────────────── */
+
 .form-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -56,12 +58,8 @@ main {
   background: var(--white);
 }
 
-/* Última fila: fecha + botón lado a lado */
-.form-last-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  align-items: flex-end;
+.form-actions {
+  margin-top: 2rem;
 }
 
 .form-actions button {
@@ -72,13 +70,98 @@ main {
   background: var(--teal-mint);
   border: none;
   border-radius: 8px;
-  padding: 11px 36px;
+  padding: 12px 36px;
   cursor: pointer;
-  white-space: nowrap;
   transition: background 0.2s;
-  height: 100%;
 }
 
 .form-actions button:hover {
   background: var(--teal);
+}
+
+/* ───────────────── LISTA ───────────────── */
+
+.list-card {
+  margin-top: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.tabla-recetas {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.tabla-recetas thead tr {
+  background: #eaf7f8;
+}
+
+.tabla-recetas th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.tabla-recetas td {
+  padding: 14px 16px;
+  border-top: 1px solid #edf1f2;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.tabla-recetas tbody tr {
+  transition: background 0.2s;
+}
+
+.tabla-recetas tbody tr:hover {
+  background: #f7fbfc;
+}
+
+.badge-receta {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0,180,196,0.12);
+  color: var(--teal-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+
+  .list-card {
+    padding: 1rem;
+  }
+
+  .tabla-recetas {
+    min-width: 750px;
+  }
+
+}
+
+/* ───────────────── BOTON ELIMINAR ───────────────── */
+
+.btn-eliminar{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  font-weight:700;
+  color:#fff;
+  background:#dc2626;
+  border:none;
+  border-radius:6px;
+  padding:8px 16px;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+
+.btn-eliminar:hover{
+  background:#b91c1c;
 }
