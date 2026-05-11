@@ -1,5 +1,48 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: index.php");
+    exit;
+}
+
+$id_usuario = $_SESSION['id_usuario'];
+require_once 'BD/conectar.php';
+$db = Conexion::ConexionBD();
+
+/* ================= GUARDAR ================= */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $accion = $_POST['accion'];
+
+    if ($accion == "guardar") {
+        $inicio = $_POST['fecha'] . " " . $_POST['hora'] . ":00";
+        $fin = date('Y-m-d H:i:s', strtotime($inicio . ' +1 hour'));
+
+        /* Médico fijo temporal o según lógica de negocio */
+        $id_medico = 1;
+
+        $sql = "INSERT INTO citas (id_paciente, id_medico, inicio, fin, motivo, estado, id_usuario)
+                VALUES (:paciente, :medico, :inicio, :fin, :motivo, :estado, :id_usuario)";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute([
+            ':paciente'   => $_POST['paciente'],
+            ':medico'     => $id_medico,
+            ':inicio'     => $inicio,
+            ':fin'        => $fin,
+            ':motivo'     => $_POST['motivo'],
+            ':estado'     => 'programada',
+            ':id_usuario' => $id_usuario
+        ]);
+    }
+
+    header("Location: citas.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +53,24 @@
     <link rel="stylesheet" href="css/pacientes.css">
     <title>DocManager - Citas</title>
 </head>
-<body data-title="Citas">
-    
-    <aside id="sidebar-container"></aside><!--menu lateral-->
 
+<body data-title="Citas">
+    <aside id="sidebar-container"></aside>
 
     <div class="layout">
         <div id="header-container"></div>
-        
+
         <main>
+            <!-- ================= LISTA ================= -->
             <div class="list-card" id="vista-lista">
                 <div class="list-toolbar">
                     <div class="tabs">
-                        <button class="tab" data-filter="todas">Todas</button>
-                        <button class="tab" data-filter="programada">Programadas</button>
-                        <button class="tab" data-filter="atendida">Atendidas</button>
-                        <button class="tab" data-filter="cancelada">Canceladas</button>
+                        <button class="tab active">Todas</button>
+                        <button class="tab">Programadas</button>
+                        <button class="tab">Atendidas</button>
+                        <button class="tab">Canceladas</button>
                     </div>
-                    <button class="btn-nuevo" id="btn-abrir-form">Nueva cita</button>
+                    <button class="btn-nuevo" onclick="nuevo()">Nueva cita</button>
                 </div>
 
                 <table>
@@ -42,71 +85,96 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $sql = "SELECT c.id_cita, c.inicio, c.motivo, c.estado, p.nombre, p.apellido
+                                FROM citas c
+                                JOIN pacientes p ON p.id_paciente = c.id_paciente
+                                WHERE COALESCE(p.eliminado,0) = 0 AND c.id_usuario = :id_usuario
+                                ORDER BY c.inicio ASC";
+
+                        $stmt = $db->prepare($sql);
+                        $stmt->execute([':id_usuario' => $id_usuario]);
+
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
+                        ?>
                         <tr>
-                            <td>100</td><td>27/04/2026</td><td>Juan Perez</td><td>Lele pancha</td><td>Pendiente</td>
+                            <td><?php echo $row['id_cita']; ?></td>
+                            <td><?php echo date('d/m/Y H:i', strtotime($row['inicio'])); ?></td>
+                            <td><?php echo $row['nombre'] . " " . $row['apellido']; ?></td>
+                            <td><?php echo $row['motivo']; ?></td>
+                            <td><?php echo ucfirst($row['estado']); ?></td>
                             <td><button class="btn-ver">Ver</button></td>
                         </tr>
-                        <tr>
-                            <td>101</td><td>Aldo</td><td>Perez</td><td>32</td><td>O+</td>
-                            <td><button class="btn-ver">Ver</button></td>
-                        </tr>
-                        <tr>
-                            <td>102</td><td>Miguel</td><td>Perez</td><td>32</td><td>O+</td>
-                            <td><button class="btn-ver">Ver</button></td>
-                        </tr>
-                        <tr>
-                            <td>103</td><td>Samuel</td><td>Perez</td><td>32</td><td>O+</td>
-                            <td><button class="btn-ver">Ver</button></td>
-                        </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
+            </div>
 
-            </div><!--lista-card-->
-            
-            <form class="form-card" style="display: none;" id="vista-form">
+            <!-- ================= FORMULARIO ================= -->
+            <form id="vista-form" class="form-card" method="POST" style="display:none;">
                 <div class="form-header">
-                    <button type="button" class="btn-volver" id="btn-volver">
-                        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-                        Volver
-                    </button>
+                    <button type="button" class="btn-volver" onclick="volver()">Volver</button>
                     <h2 class="form-title">Nueva Cita</h2>
                 </div>
 
+                <input type="hidden" name="accion" value="guardar">
+
                 <div class="form-col">
                     <div class="field-group">
-                        <label for="paciente">Paciente</label>
-                        <select name="paciente" id="paciente">
-                            <option value="Samuel Garcia (ID: 101)"></option>
-                            <option value="Samuel Garcia (ID: 101)"></option>
-                            <option value="Samuel Garcia (ID: 101)"></option>
-                            <option value="Samuel Garcia (ID: 101)"></option>
+                        <label>Paciente</label>
+                        <select name="paciente" required>
+                            <option value="">Seleccione paciente</option>
+                            <?php
+                            $sqlPacientes = "SELECT id_paciente, nombre, apellido FROM pacientes 
+                                             WHERE COALESCE(eliminado,0) = 0 AND id_usuario = :id_usuario 
+                                             ORDER BY nombre";
+                            $stmtPac = $db->prepare($sqlPacientes);
+                            $stmtPac->execute([':id_usuario' => $id_usuario]);
+
+                            while ($pac = $stmtPac->fetch(PDO::FETCH_ASSOC)) :
+                            ?>
+                                <option value="<?php echo $pac['id_paciente']; ?>">
+                                    <?php echo $pac['nombre'] . " " . $pac['apellido']; ?>
+                                </option>
+                            <?php endwhile; ?>
                         </select>
                     </div>
+
                     <div class="form-grid-2">
                         <div class="field-group">
-                            <label for="fecha">Fecha</label>
-                            <input type="date" name="fecha" id="fecha">
+                            <label>Fecha</label>
+                            <input type="date" name="fecha" required>
                         </div>
                         <div class="field-group">
-                            <label for="hora">Hora</label>
-                            <input type="time" name="hora" id="hora">
+                            <label>Hora</label>
+                            <input type="time" name="hora" required>
                         </div>
-                    </div><!--form-grid-2-->
-                    <div class="field-group">
-                        <label for="motivo">Motivo de consulta</label>
-                        <input type="text" name="motivo" id="motivo" placeholder="Describa el motivo de la consulta">
                     </div>
-                </div><!--form col-->
-                <div class="form-actions">
-                    <button type="button">Confirmar Cita</button>
+
+                    <div class="field-group">
+                        <label>Motivo de consulta</label>
+                        <input type="text" name="motivo" placeholder="Describa el motivo" required>
+                    </div>
                 </div>
-            </form><!--form card-->
+
+                <div class="form-actions">
+                    <button type="submit">Confirmar Cita</button>
+                </div>
+            </form>
         </main>
-    </div><!--header-->
+    </div>
 
-    <script src="js/header.js"></script>
     <script src="js/sidebar.js"></script>
-    <script src="js/citas.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+        function nuevo() {
+            document.getElementById("vista-lista").style.display = "none";
+            document.getElementById("vista-form").style.display = "block";
+        }
 
+        function volver() {
+            location.reload();
+        }
+    </script>
 </body>
 </html>
