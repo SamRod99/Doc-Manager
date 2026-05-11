@@ -14,12 +14,15 @@
   --orange:      #e8881a;
   --radius:      10px;
 }
+
 main {
   flex: 1;
   padding: 2rem;
   background: var(--bg);
-
 }
+
+/* ── FORM ─────────────────────────────────── */
+
 .form-card {
   background: var(--bg);
   border: 2px solid var(--border);
@@ -101,7 +104,8 @@ main {
   margin-bottom: 2rem;
 }
 
-/* ── LISTA ───────────────────────────────────── */
+/* ── LISTA ───────────────────────────────── */
+
 .list-card {
   background: var(--bg);
   border-radius: 20px;
@@ -110,15 +114,27 @@ main {
   transition: transform 0.2s, box-shadow 0.2s;
   animation: fadeUp 0.5s ease both;
 }
+
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .list-toolbar {
   display: flex;
   gap: 1rem;
   margin-bottom: 1.2rem;
 }
+
+/* ── SEARCH ──────────────────────────────── */
 
 .search-wrapper {
   flex: 1;
@@ -138,8 +154,11 @@ main {
 }
 
 .search-wrapper svg {
-  width: 18px; height: 18px;
-  stroke: var(--teal); fill: none; stroke-width: 2;
+  width: 18px;
+  height: 18px;
+  stroke: var(--teal);
+  fill: none;
+  stroke-width: 2;
   flex-shrink: 0;
 }
 
@@ -158,6 +177,8 @@ main {
   color: var(--text-muted);
 }
 
+/* ── BOTON NUEVO ─────────────────────────── */
+
 .btn-nuevo {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
@@ -172,9 +193,12 @@ main {
   transition: background 0.2s;
 }
 
-.btn-nuevo:hover { background: var(--teal); }
+.btn-nuevo:hover {
+  background: var(--teal);
+}
 
-/* ── TABLA ───────────────────────────────────── */
+/* ── TABLA ───────────────────────────────── */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -200,25 +224,116 @@ tbody tr {
   transition: background 0.15s;
 }
 
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #f7fbfc; }
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #f7fbfc;
+}
 
 tbody td {
   padding: 13px 16px;
   color: var(--text);
 }
 
-.btn-ver, .btn-volver {
+/* ── BOTONES ─────────────────────────────── */
+
+.btn-ver,
+.btn-volver,
+.btn-historial {
+
   font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
+
   color: #fff;
-  background: var(--teal);
+
   border: none;
   border-radius: 6px;
+
   padding: 6px 20px;
+
   cursor: pointer;
+
   transition: background 0.2s;
 }
 
-.btn-ver:hover { background: var(--teal-dark); }
+/* editar */
+
+.btn-ver {
+  background: var(--teal);
+}
+
+.btn-ver:hover {
+  background: var(--teal-dark);
+}
+
+/* historial */
+
+.btn-historial {
+  background: var(--orange);
+}
+
+.btn-historial:hover {
+  background: #c96f09;
+}
+
+/* volver */
+
+.btn-volver {
+  background: var(--text-muted);
+}
+
+.btn-volver:hover {
+  background: var(--text);
+}
+
+/* ── ACCIONES ────────────────────────────── */
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.acciones{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.btn-historial{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  font-weight:600;
+  color:#fff;
+  background:var(--orange);
+  border:none;
+  border-radius:6px;
+  padding:6px 20px;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+
+.btn-historial:hover{
+  background:#c96f07;
+}
+
+.btn-eliminar{
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  font-weight:600;
+  color:#fff;
+  background:#dc2626;
+  border:none;
+  border-radius:6px;
+  padding:6px 20px;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+
+.btn-eliminar:hover{
+  background:#b91c1c;
+}
+
