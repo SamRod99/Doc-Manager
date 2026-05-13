@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':inicio'     => $inicio,
             ':fin'        => $fin,
             ':motivo'     => $_POST['motivo'],
-            ':estado'     => 'programada',
+            ':estado' => 'pendiente',
             ':id_usuario' => $id_usuario
         ]);
     }
@@ -65,11 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="list-card" id="vista-lista">
                 <div class="list-toolbar">
                     <div class="tabs">
-                        <button class="tab active">Todas</button>
-                        <button class="tab">Programadas</button>
-                        <button class="tab">Atendidas</button>
-                        <button class="tab">Canceladas</button>
-                    </div>
+    <button class="tab active">Todas</button>
+    <button class="tab">Pendientes</button>
+    <button class="tab">Atendidas</button>
+    <button class="tab">Canceladas</button>
+</div>
                     <button class="btn-nuevo" onclick="nuevo()">Nueva cita</button>
                 </div>
 
